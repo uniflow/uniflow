@@ -1,7 +1,7 @@
 {
   "name": "uniflow",
   "version": "0.2.2",
-  "description": "A flux inspired unidirectional data flow library.",
+  "description": "A flux-inspired unidirectional data flow library.",
   "main": "index.js",
   "scripts": {
     "test": "jshint lib && mocha"
