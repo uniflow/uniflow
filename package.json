@@ -4,7 +4,7 @@
   "description": "A flux inspired unidirectional data flow library.",
   "main": "index.js",
   "scripts": {
-    "test": "jshint *.js && mocha"
+    "test": "jshint lib && mocha"
   },
   "author": "Brent Burgoyne",
   "license": "MIT",

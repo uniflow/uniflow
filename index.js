@@ -1,6 +1,6 @@
 'use strict'
 
 module.exports = {
-  createActions: require('./createActions'),
-  createStore: require('./createStore')
+  createActions: require('./lib/createActions'),
+  createStore: require('./lib/createStore')
 }
