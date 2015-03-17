@@ -2,7 +2,7 @@
 
 var should = require('should')
 var sinon = require('sinon')
-var createStore = require('../lib/createStore')
+var createStore = require('../lib/create-store')
 
 describe('createStore(obj)', function() {
   describe('returned store', function() {

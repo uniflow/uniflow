@@ -2,7 +2,7 @@
 
 var should = require('should')
 var sinon = require('sinon')
-var createActions = require('../lib/createActions')
+var createActions = require('../lib/create-actions')
 
 describe('createActions()', function() {
   it('returns an event emitter', function() {
