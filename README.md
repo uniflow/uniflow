@@ -15,6 +15,7 @@ var Uniflow = require('uniflow')
 var superagent = require('superagent')
 var resourceUrl = '[some url]'
 
+
 // define actions
 var PersonActions = Uniflow.createActions({
   changeName(first, last) {
@@ -33,6 +34,7 @@ var PersonActions = Uniflow.createActions({
   }
 })
 
+
 // define store
 var PersonStore = Uniflow.createStore({
   fullName() {
@@ -40,18 +42,20 @@ var PersonStore = Uniflow.createStore({
   }
 })
 
+
 // stores subscribe to actions
 PersonActions.on('name-change-pending', function(first, last) {
-  PersonActions.setState({first, last, status: 'pending'})
+  PersonStore.setState({first, last, status: 'pending'})
 })
 
 PersonActions.on('name-change-success', function(first, last) {
-  PersonActions.setState({first, last, status: 'saved'})
+  PersonStore.setState({first, last, status: 'saved'})
 })
 
 PersonActions.on('name-change-error', function(first, last) {
-  PersonActions.setState({error: err, status: 'error'})
+  PersonStore.setState({error: err, status: 'error'})
 })
+
 
 // views subscribe to stores
 PersonStore.on('change', function() {
@@ -60,6 +64,7 @@ PersonStore.on('change', function() {
   }
   console.log(PersonStore.fullName())
 })
+
 
 // views initiate actions
 PersonActions.changeName('Tobias', 'Funke')
