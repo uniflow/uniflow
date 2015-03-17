@@ -56,5 +56,34 @@ describe('createStore(obj)', function() {
         sinon.assert.notCalled(listener)
       })
     })
+
+    describe('.replaceState(newState)', function() {
+      it('replace store.state with newState', function() {
+        store.setState({foo: 'bar'})
+        var expected = {bar: 'baz'}
+        store.replaceState(expected)
+        store.state.should.eql(expected)
+      })
+
+      it('updates state with a new frozen state', function() {
+        store.replaceState({foo: 'bar'})
+        Object.isFrozen(store.state).should.be.true
+      })
+
+      it('emits a change event', function() {
+        var listener = sinon.spy()
+        store.on('change', listener)
+        store.replaceState({foo: 'bar'})
+        sinon.assert.calledOnce(listener)
+      })
+
+      it('does not emit a change event if state does not change', function() {
+        var listener = sinon.spy()
+        store.setState({foo: 'bar'})
+        store.on('change', listener)
+        store.replaceState({foo: 'bar'})
+        sinon.assert.notCalled(listener)
+      })
+    })
   })
 })
