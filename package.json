@@ -1,0 +1,21 @@
+{
+  "name": "uniflow",
+  "version": "0.1.0",
+  "description": "A flux inspired unidirectional data flow library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Brent Burgoyne",
+  "license": "MIT",
+  "dependencies": {
+    "eventemitter3": "^0.1.6",
+    "obj-eql": "^1.0.1",
+    "object-assign": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "should": "^5.2.0",
+    "sinon": "^1.14.1"
+  }
+}
