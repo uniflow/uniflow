@@ -5,7 +5,7 @@ var EventEmitter = require('eventemitter3')
 var objEql = require('obj-eql')
 
 function createStore(obj) {
-  return assign(Object.create(EventEmitter.prototype), obj, {
+  return assign(Object.create(EventEmitter.prototype), {
     state: {},
     setState: function(change) {
       var newState = assign({}, this.state, change)
@@ -14,8 +14,7 @@ function createStore(obj) {
         this.emit('change')
       }
     }
-  })
+  }, obj)
 }
 
 module.exports = createStore
-
