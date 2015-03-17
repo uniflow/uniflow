@@ -11,13 +11,13 @@ $ npm install uniflow --save
 ## Usage
 
 ```js
-var Uniflow = require('uniflow')
+var uniflow = require('uniflow')
 var superagent = require('superagent')
 var resourceUrl = '[some url]'
 
 
 // define actions
-var PersonActions = Uniflow.createActions({
+var PersonActions = uniflow.createActions({
   changeName(first, last) {
     this.emit('name-change-pending', first, last)
     // async code always belongs in an action
@@ -36,7 +36,7 @@ var PersonActions = Uniflow.createActions({
 
 
 // define store
-var PersonStore = Uniflow.createStore({
+var PersonStore = uniflow.createStore({
   fullName() {
     return this.state.firstName + ' ' + this.state.lastName
   }
