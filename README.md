@@ -38,7 +38,7 @@ var PersonActions = uniflow.createActions({
 // define store
 var PersonStore = uniflow.createStore({
   fullName() {
-    return this.state.firstName + ' ' + this.state.lastName
+    return this.state.first + ' ' + this.state.last
   }
 })
 
