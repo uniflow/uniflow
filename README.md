@@ -52,8 +52,8 @@ PersonActions.on('name-change-success', function(first, last) {
   PersonStore.setState({first, last, status: 'saved'})
 })
 
-PersonActions.on('name-change-error', function(first, last) {
-  PersonStore.setState({error: err, status: 'error'})
+PersonActions.on('name-change-error', function(error) {
+  PersonStore.setState({error, status: 'error'})
 })
 
 
