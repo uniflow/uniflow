@@ -26,10 +26,19 @@ describe('createStore(obj)', function() {
       store.should.have.property('bar', 2)
     })
 
+    it('has frozen state property', function() {
+      Object.isFrozen(store.state).should.be.true
+    })
+
     describe('.setState(change)', function() {
       it('assigns properties of change to store.state', function() {
         store.setState({foo: 'bar'})
         store.state.should.have.property('foo', 'bar')
+      })
+
+      it('updates state with a new frozen state', function() {
+        store.setState({foo: 'bar'})
+        Object.isFrozen(store.state).should.be.true
       })
 
       it('emits a change event', function() {
