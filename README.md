@@ -1,4 +1,4 @@
-![Uniflow](logo.svg)
+![Uniflow](logo.png)
 
 A flux inspired unidirectional data flow library.
 
