@@ -1,6 +1,30 @@
 ![Uniflow](logo.png)
 
-A flux inspired unidirectional data flow library.
+Uniflow is a flux-inspired unidirectional data flow library. It works great with
+React, but it could be used just as easily with any other view library. The
+primary goal of Uniflow is simplicity. The entire `lib` directory can be
+read and understood in minutes. Give it a try!
+
+## Features
+
+### Actions
+
+- An actions object is an `EventEmitter` (eventemitter3).
+- Action methods are auto-bound to the actions object. This is great for passing actions directly as callbacks to other functions.
+- Action methods have a partial method. It does what you would expect. For example: `<button onClick={itemActions.deleteItem.partial(this.props.id)}>Delete</button>`.
+- Action methods emit events using `this.emit('event-name', payload)`.
+
+### Stores
+
+- A store object is an `EventEmitter`. (Notice the pattern?)
+- The `store.state` property should only be mutated use `store.setState()` or `store.replaceState()`
+- The `store.state` property is frozen to ensure it is not directly mutated.
+- Emits a `'change'` event when the `state` changes. It uses shallow equality to test if `state` has changed similar to how PureRenderMixin works in React.
+- Works well with Immutable.js values as properties of `state`.
+
+### Dispatcher
+
+- There is no dispatcher!
 
 ## Installation
 
@@ -9,6 +33,8 @@ $ npm install uniflow --save
 ```
 
 ## Usage
+
+### Example
 
 ```js
 var uniflow = require('uniflow')
