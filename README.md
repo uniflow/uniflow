@@ -1,4 +1,4 @@
-![Uniflow](logo.png)
+![Uniflow](http://uniflow.github.io/img/logo.svg)
 
 Uniflow is a flux-inspired unidirectional data flow library. It works great with
 React, but it could be used just as easily with any other view library. The
