@@ -13,7 +13,7 @@ read and understood in minutes. Give it a try!
 - Action methods are auto-bound to the actions object. This is great for passing actions directly as callbacks to other functions.
 - Action methods have a partial method. It does what you would expect. For example: `<button onClick={itemActions.deleteItem.partial(this.props.id)}>Delete</button>`.
 - Action methods emit events using `this.emit('event-name', payload)`.
-- Should contain **all** async code
+- Async code belongs here.
 
 ### Stores
 
