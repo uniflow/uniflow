@@ -56,6 +56,11 @@ describe('createStore(obj)', function() {
         store.state.should.eql(expected)
       })
 
+      it('adds store circular ref to new state', function() {
+        store.setState({foo: 'bar'})
+        store.state.store.should.equal(store)
+      })
+
       it('emits a change event', function() {
         var listener = sinon.spy()
         store.on('change', listener)
