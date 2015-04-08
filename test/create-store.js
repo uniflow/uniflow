@@ -26,6 +26,14 @@ describe('createStore(obj)', function() {
       store.should.have.property('bar', 2)
     })
 
+    it('autobinds all function properties', function() {
+      var foo = sinon.spy()
+      store = createStore({foo: foo})
+      var fooAction = store.foo
+      fooAction()
+      sinon.assert.alwaysCalledOn(foo, store)
+    })
+
     describe('.setState(change)', function() {
       it('assigns properties of change to store.state', function() {
         store.setState({foo: 'bar'})
