@@ -1,6 +1,6 @@
 {
   "name": "uniflow",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A flux-inspired unidirectional data flow library.",
   "main": "index.js",
   "scripts": {
