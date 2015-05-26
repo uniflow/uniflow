@@ -1,15 +1,17 @@
+/* global describe, it, beforeEach */
 'use strict'
 
-var should = require('should')
+require('should')
 var sinon = require('sinon')
 var createActions = require('../lib/create-actions')
+var asap = require('asap')
 
-describe('createActions()', function() {
-  it('returns an event emitter', function() {
+describe('createActions()', function () {
+  it('returns an event emitter', function () {
     createActions({}).should.have.property('addListener').which.is.a.Function
   })
 
-  it('returns object with all keys from obj', function() {
+  it('returns object with all keys from obj', function () {
     var actions = createActions({
       foo: function () {},
       bar: function () {}
@@ -18,52 +20,64 @@ describe('createActions()', function() {
     actions.should.have.property('bar').which.is.a.Function
   })
 
-  it('throws when called with a non-function property of obj', function() {
+  it('throws when called with a non-function property of obj', function () {
     createActions.bind(null, {foo: 'bar'}).should.throw()
   })
 
-  describe('returned method', function() {
+  describe('returned method', function () {
     var func
     var actions
 
-    beforeEach(function() {
+    beforeEach(function () {
       func = sinon.spy()
       actions = createActions({foo: func})
     })
 
-    it('binds to the actions object', function() {
+    it('binds to the actions object', function (done) {
       var actionValue = actions.foo
       actionValue()
-      sinon.assert.calledOn(func, actions)
+      asap(function () {
+        sinon.assert.calledOn(func, actions)
+        done()
+      })
     })
 
-    it('calls the original function with aguments', function() {
+    it('calls the original function with aguments', function (done) {
       actions.foo(1, 2, 3)
-      sinon.assert.calledWithExactly(func, 1, 2, 3)
+      asap(function () {
+        sinon.assert.calledWithExactly(func, 1, 2, 3)
+        done()
+      })
     })
 
-    it('has a partial method', function() {
+    it('has a partial method', function () {
       actions.foo.should.have.property('partial').which.is.a.Function
     })
 
-    describe('.partial()', function() {
+    describe('.partial()', function () {
       var partial
 
-      beforeEach(function() {
+      beforeEach(function () {
         partial = actions.foo.partial(1, 2)
       })
 
-      it('returns a function with bound arguments', function() {
+      it('returns a function with bound arguments', function (done) {
         partial(3)
-        sinon.assert.calledWithExactly(func, 1, 2, 3)
+        asap(function () {
+          sinon.assert.calledWithExactly(func, 1, 2, 3)
+          done()
+        })
       })
 
-      it('returns a function bound to actions context', function() {
+      it('returns a function bound to actions context', function (done) {
         partial()
-        sinon.assert.calledOn(func, actions)
+        asap(function () {
+          sinon.assert.calledOn(func, actions)
+          done()
+        })
       })
 
-      it('returns a function with a partial method', function() {
+      it('returns a function with a partial method', function () {
         partial.should.have.property('partial').which.is.a.Function
       })
     })
