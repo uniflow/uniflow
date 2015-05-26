@@ -9,6 +9,7 @@
   "author": "Brent Burgoyne",
   "license": "MIT",
   "dependencies": {
+    "asap": "^2.0.3",
     "eventemitter3": "^0.1.6",
     "obj-eql": "^1.0.1",
     "object-assign": "^2.0.0"
